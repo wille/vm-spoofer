@@ -10,10 +10,11 @@ namespace VM_Spoofer
 
     class AbstractRegKey
     {
-        private string Key { get; set; }
-        private string Name { get; set; }
-        private string Value { get; set; }
-        private RegistryKey BaseKey { get; set; }
+        public string Key { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public RegistryKey BaseKey { get; set; }
+        public Program.vms VMType { get; set; }
 
 
         public void create()
@@ -25,7 +26,9 @@ namespace VM_Spoofer
 
         public void delete()
         {
-
+            RegistryKey key = BaseKey.CreateSubKey(Key);
+            key.DeleteValue(Name);
+            key.Close();
         }
     }
 
