@@ -15,6 +15,14 @@ namespace VM_Spoofer
         public MainForm()
         {
             InitializeComponent();
+
+            foreach (AbstractRegKey ark in Program.RegKeyList)
+            {
+                string[] row = new string[] { ark.Key };
+                ListViewItem item = new ListViewItem(row);
+                item.Group = listView.Groups[(int) ark.VMType];
+                listView.Items.Add(item);
+            }
         }
     }
 }

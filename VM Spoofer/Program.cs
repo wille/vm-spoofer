@@ -10,7 +10,7 @@ namespace VM_Spoofer
     static class Program
     {
 
-        public static enum vms { VIRTUALBOX, VMWARE, QEMU };
+        public enum vms : int { VIRTUALBOX = 0, VMWARE = 1, QEMU = 2 };
 
         public static List<AbstractRegKey> RegKeyList = new List<AbstractRegKey>()
         {
