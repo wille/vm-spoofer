@@ -30,6 +30,13 @@ namespace VM_Spoofer
             key.DeleteValue(Name);
             key.Close();
         }
+
+        public bool exists()
+        {
+            object value = BaseKey.GetValue(Key, null, RegistryValueOptions.None);
+
+            return value != null;
+        }
     }
 
 }
