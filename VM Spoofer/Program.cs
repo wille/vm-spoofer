@@ -8,15 +8,24 @@ namespace VM_Spoofer
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
+
+        List<AbstractRegKey> RegKeyList = new List<AbstractRegKey>()
+        {
+
+        };
+
+
         static void Main()
         {
+            LoadLists();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+        }
+
+        private static void LoadLists()
+        {
+
         }
     }
 }
