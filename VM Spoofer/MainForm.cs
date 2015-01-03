@@ -18,9 +18,17 @@ namespace VM_Spoofer
 
             foreach (AbstractRegKey ark in Program.RegKeyList)
             {
-                string[] row = new string[] { ark.Key };
+                string[] row = new string[] { ark.Key, ark.exists() ? "Yes" : "No" };
                 ListViewItem item = new ListViewItem(row);
                 item.Group = listView.Groups[(int) ark.VMType];
+                listView.Items.Add(item);
+            }
+
+            foreach (AbstractFile af in Program.FileList)
+            {
+                string[] row = new string[] { af.Path, af.exists() ? "Yes" : "No" };
+                ListViewItem item = new ListViewItem(row);
+                item.Group = listView.Groups[(int)af.VMType];
                 listView.Items.Add(item);
             }
         }
