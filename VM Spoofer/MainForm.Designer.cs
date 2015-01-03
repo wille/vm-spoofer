@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("VirtualBox", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("VMWare", System.Windows.Forms.HorizontalAlignment.Left);
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("VirtualBox", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("VMWare", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView = new System.Windows.Forms.ListView();
             this.headerFileKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headerExists = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView
@@ -41,19 +46,20 @@
             this.headerFileKey,
             this.headerExists});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewGroup1.Header = "VirtualBox";
-            listViewGroup1.Name = "groupVirtualBox";
-            listViewGroup2.Header = "VMWare";
-            listViewGroup2.Name = "groupVMWare";
+            listViewGroup3.Header = "VirtualBox";
+            listViewGroup3.Name = "groupVirtualBox";
+            listViewGroup4.Header = "VMWare";
+            listViewGroup4.Name = "groupVMWare";
             this.listView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(725, 366);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseClick);
             // 
             // headerFileKey
             // 
@@ -65,6 +71,27 @@
             this.headerExists.Text = "Exists";
             this.headerExists.Width = 252;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(153, 70);
+            // 
+            // createToolStripMenuItem
+            // 
+            this.createToolStripMenuItem.Name = "createToolStripMenuItem";
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createToolStripMenuItem.Text = "Create";
+            this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -73,6 +100,7 @@
             this.Controls.Add(this.listView);
             this.Name = "MainForm";
             this.Text = "VM Spoofer";
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +111,9 @@
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader headerFileKey;
         private System.Windows.Forms.ColumnHeader headerExists;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
 

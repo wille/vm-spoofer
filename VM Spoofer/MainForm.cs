@@ -16,11 +16,17 @@ namespace VM_Spoofer
         {
             InitializeComponent();
 
+            UpdateListView();
+        }
+
+        public void UpdateListView()
+        {
+            listView.Items.Clear();
             foreach (AbstractRegKey ark in Program.RegKeyList)
             {
                 string[] row = new string[] { ark.Key, ark.exists() ? "Yes" : "No" };
                 ListViewItem item = new ListViewItem(row);
-                item.Group = listView.Groups[(int) ark.VMType];
+                item.Group = listView.Groups[(int)ark.VMType];
                 listView.Items.Add(item);
             }
 
@@ -30,6 +36,25 @@ namespace VM_Spoofer
                 ListViewItem item = new ListViewItem(row);
                 item.Group = listView.Groups[(int)af.VMType];
                 listView.Items.Add(item);
+            }
+        }
+
+        private void listView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listView.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    contextMenuStrip.Show(Cursor.Position);
+                }
+            } 
+        }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listView.SelectedItems.Count; i++) {
+                ListViewItem selected = listView.SelectedItems[i];
+                Console.WriteLine(selected.Text);
             }
         }
     }
