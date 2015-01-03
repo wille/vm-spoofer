@@ -6,34 +6,33 @@ using System.Threading.Tasks;
 using Microsoft.Win32;
 
 namespace VM_Spoofer
-{ 
+{
 
-    class AbstractRegKey
+    class AbstractRegKey : AbstractItem
     {
-        public string Key { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
         public RegistryKey BaseKey { get; set; }
         public Program.vms VMType { get; set; }
 
 
-        public void create()
+        public override void create()
         {
-            RegistryKey key = BaseKey.CreateSubKey(Key);
+            RegistryKey key = BaseKey.CreateSubKey(Path);
             key.SetValue(Name, Value);
             key.Close();
         }
 
-        public void delete()
+        public override void delete()
         {
-            RegistryKey key = BaseKey.CreateSubKey(Key);
+            RegistryKey key = BaseKey.CreateSubKey(Path);
             key.DeleteValue(Name);
             key.Close();
         }
 
-        public bool exists()
+        public override bool exists()
         {
-            object value = BaseKey.GetValue(Key, null, RegistryValueOptions.None);
+            object value = BaseKey.GetValue(Path, null, RegistryValueOptions.None);
 
             return value != null;
         }

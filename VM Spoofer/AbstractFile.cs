@@ -7,12 +7,11 @@ using System.IO;
 
 namespace VM_Spoofer
 {
-    class AbstractFile
+    class AbstractFile : AbstractItem
     {
-        public string Path { get; set; }
         public Program.vms VMType { get; set; }
 
-        public bool exists()
+        public override bool exists()
         {
             return File.Exists(Path);
         }
