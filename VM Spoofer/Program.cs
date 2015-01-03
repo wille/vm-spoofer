@@ -14,10 +14,10 @@ namespace VM_Spoofer
 
         public static List<AbstractRegKey> RegKeyList = new List<AbstractRegKey>()
         {
-            new AbstractRegKey() { Key = "HARDWARE\\SOFTWARE\\Oracle\\VirtualBox Guest Additions", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
-            new AbstractRegKey() { Key = "HARDWARE\\SYSTEM\\ControlSet001\\Services\\VBox", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
+            new AbstractRegKey() { Path = "HARDWARE\\SOFTWARE\\Oracle\\VirtualBox Guest Additions", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
+            new AbstractRegKey() { Path = "HARDWARE\\SYSTEM\\ControlSet001\\Services\\VBox", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
 
-            new AbstractRegKey() { Key = "SOFTWARE\\VMware, Inc.\\VMware Tools", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VMWARE },
+            new AbstractRegKey() { Path = "SOFTWARE\\VMware, Inc.\\VMware Tools", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VMWARE },
         };
 
         public static List<AbstractFile> FileList = new List<AbstractFile>()
@@ -31,6 +31,27 @@ namespace VM_Spoofer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());         
+        }
+
+        public static AbstractItem GetItem(string Path)
+        {
+            foreach (AbstractRegKey ark in Program.RegKeyList)
+            {
+                if (ark.Path == Path)
+                {
+                    return ark;
+                }
+            }
+
+            foreach (AbstractFile af in Program.FileList)
+            {
+                if (af.Path == Path)
+                {
+                    return af;
+                }
+            }
+
+            return null;
         }
 
     }
