@@ -15,5 +15,15 @@ namespace VM_Spoofer
         {
             return File.Exists(Path);
         }
+
+        public override void create()
+        {
+            File.Create(Path);
+        }
+
+        public override void delete()
+        {
+            File.Delete(Path);
+        }
     }
 }
