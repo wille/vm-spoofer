@@ -19,5 +19,10 @@ namespace VM_Spoofer
         {
 
         }
+
+        public virtual bool exists()
+        {
+            return false;
+        }
     }
 }

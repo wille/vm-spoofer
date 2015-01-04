@@ -24,7 +24,7 @@ namespace VM_Spoofer
             listView.Items.Clear();
             foreach (AbstractRegKey ark in Program.RegKeyList)
             {
-                string[] row = new string[] { ark.Key, ark.exists() ? "Yes" : "No" };
+                string[] row = new string[] { ark.Path, ark.exists() ? "Yes" : "No" };
                 ListViewItem item = new ListViewItem(row);
                 item.Group = listView.Groups[(int)ark.VMType];
                 listView.Items.Add(item);
@@ -54,7 +54,9 @@ namespace VM_Spoofer
         {
             for (int i = 0; i < listView.SelectedItems.Count; i++) {
                 ListViewItem selected = listView.SelectedItems[i];
-                Console.WriteLine(selected.Text);
+                AbstractItem item = Program.GetItem(selected.Text);
+                item.create();
+                UpdateListView();
             }
         }
     }

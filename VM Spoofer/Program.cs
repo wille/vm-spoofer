@@ -22,7 +22,9 @@ namespace VM_Spoofer
 
         public static List<AbstractFile> FileList = new List<AbstractFile>()
         {
-            new AbstractFile() { Path = "C:\\WINDOWS\\system32\\drivers\\vmhgfs.sys", VMType = vms.VIRTUALBOX },
+            new AbstractFile() { Path = "C:\\WINDOWS\\system32\\drivers\\vmhgfs.sys", VMType = vms.VMWARE },
+            new AbstractFile() { Path = "C:\\WINDOWS\\system32\\drivers\\vmmouse.sys", VMType = vms.VMWARE },
+
         };
 
 
