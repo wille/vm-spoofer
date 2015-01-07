@@ -25,9 +25,16 @@ namespace VM_Spoofer
 
         public override void delete()
         {
-            RegistryKey key = BaseKey.CreateSubKey(Path);
-            key.DeleteValue(Name);
-            key.Close();
+            if (Name != "")
+            {
+                RegistryKey key = BaseKey.CreateSubKey(Path);
+                key.DeleteValue(Name);
+                key.Close();
+            }
+            else
+            {
+                BaseKey.DeleteSubKey(Path);
+            }
         }
 
         public override bool exists()
