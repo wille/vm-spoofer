@@ -15,9 +15,9 @@ namespace VM_Spoofer
         public static List<AbstractRegKey> RegKeyList = new List<AbstractRegKey>()
         {
             new AbstractRegKey() { Path = "SOFTWARE\\Oracle\\VirtualBox Guest Additions", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
-            new AbstractRegKey() { Path = "HARDWARE\\SYSTEM\\ControlSet001\\Services\\VBox", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
+            new AbstractRegKey() { Path = "SYSTEM\\ControlSet001\\Services\\VBox", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VIRTUALBOX },
 
-            new AbstractRegKey() { Path = "SOFTWARE\\VMware, Inc.\\VMware Tools", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VMWARE },
+            new AbstractRegKey() { Path = "SOFTWARE\\VMware, Inc.\\VMware Tools", Name = "", Value = "", BaseKey = Registry.LocalMachine, VMType = vms.VMWARE }
         };
 
         public static List<AbstractFile> FileList = new List<AbstractFile>()
